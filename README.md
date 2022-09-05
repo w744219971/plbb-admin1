@@ -1,11 +1,6 @@
 <h1 style="text-align: center">PLDD 后台管理系统</h1>
 <div style="text-align: center">
 
-[![AUR](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/elunez/eladmin/blob/master/LICENSE)
-[![star](https://gitee.com/elunez/eladmin/badge/star.svg?theme=white)](https://gitee.com/elunez/eladmin)
-[![GitHub stars](https://img.shields.io/github/stars/elunez/eladmin.svg?style=social&label=Stars)](https://github.com/elunez/eladmin)
-[![GitHub forks](https://img.shields.io/github/forks/elunez/eladmin.svg?style=social&label=Fork)](https://github.com/elunez/eladmin)
-
 </div>
 
 #### 项目简介
@@ -17,12 +12,9 @@
 
 **账号密码：** `admin / 123456`
 
-#### 项目源码
+#### 项目地址
 
-|     |   后端源码  |   前端源码  |
-|---  |--- | --- |
-|  github   |  https://github.com/elunez/eladmin   |  https://github.com/elunez/eladmin-web   |
-|  码云   |  https://gitee.com/elunez/eladmin   |  https://gitee.com/elunez/eladmin-web   |
+**Gitlab：** https://gitlab.tech.vnet.tv/vnettv/plbb-admin
 
 #### 主要特性
 - 使用最新技术栈，社区资源丰富。
@@ -56,34 +48,44 @@
 #### 项目结构
 项目采用按功能分模块的开发方式，结构如下
 
-- `eladmin-common` 为系统的公共模块，各种工具类，公共配置存在该模块
+- `pldd-admin-common` 为系统的公共模块，各种工具类，公共配置存在该模块
 
-- `eladmin-system` 为系统核心模块也是项目入口模块，也是最终需要打包部署的模块
+- `pldd-admin-system` 为系统核心模块也是项目入口模块，也是最终需要打包部署的模块
 
-- `eladmin-logging` 为系统的日志模块，其他模块如果需要记录日志需要引入该模块
+- `pldd-admin-logging` 为系统的日志模块，其他模块如果需要记录日志需要引入该模块
 
-- `eladmin-tools` 为第三方工具模块，包含：图床、邮件、云存储、本地存储、支付宝
+- `pldd-admin-tools` 为第三方工具模块，包含：图床、邮件、云存储、本地存储、支付宝
 
-- `eladmin-generator` 为系统的代码生成模块，代码生成的模板在 system 模块中
+- `pldd-admin-generator` 为系统的代码生成模块，代码生成的模板在 system 模块中
 
 #### 详细结构
 
 ```
-- eladmin-common 公共模块
+- pldd-admin-common 公共模块
     - annotation 为系统自定义注解
     - aspect 自定义注解的切面
     - base 提供了Entity、DTO基类和mapstruct的通用mapper
     - config 自定义权限实现、redis配置、swagger配置、Rsa配置等
     - exception 项目统一异常的处理
     - utils 系统通用工具类
-- eladmin-system 系统核心模块（系统启动入口）
+- pldd-admin-system 系统核心模块（系统启动入口）
 	- config 配置跨域与静态资源，与数据权限
 	    - thread 线程池相关
 	- modules 系统相关模块(登录授权、系统监控、定时任务、运维管理等)
-- eladmin-logging 系统日志模块
-- eladmin-tools 系统第三方工具模块
-- eladmin-generator 系统代码生成模块
+- pldd-admin-logging 系统日志模块
+- pldd-admin-tools 系统第三方工具模块
+- pldd-admin-generator 系统代码生成模块
 ```
 
-#### 启动准备
-    1.MySql数据库：
+#### 启动准备 （配置文件目录为：plbb-admin-system/src/main/resource/config）
+    1.修改application.yml文件参数spring:profiles:active: local
+    2.创建本地环境配置文件：
+        （1）在配置文件目录下创建文件application-local.yml
+        （2）复制同目录下application-dev.yml文件内容到application-local.yml
+        （3）修改application-local.yml文件数据源下url、username、password等参数为本地数据库参数
+    3.数据库配置：
+        （1）创建数据库plbb_admin
+        （2）执行sql目录下plbb-admin.sql脚本
+    4.Redis配置：
+        启动redis，默认地址127.0.0.1:3306
+    5.启动

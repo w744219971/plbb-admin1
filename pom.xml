@@ -4,21 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.zhengjie</groupId>
-    <artifactId>eladmin</artifactId>
+    <groupId>tv.vnet</groupId>
+    <artifactId>plbb-admin</artifactId>
     <packaging>pom</packaging>
-    <version>2.6</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>eladmin-common</module>
-        <module>eladmin-logging</module>
-        <module>eladmin-system</module>
-        <module>eladmin-tools</module>
-        <module>eladmin-generator</module>
+        <module>plbb-admin-common</module>
+        <module>plbb-admin-logging</module>
+        <module>plbb-admin-system</module>
+        <module>plbb-admin-tools</module>
+        <module>plbb-admin-generator</module>
     </modules>
 
-    <name>ELADMIN 后台管理</name>
-    <url>https://eladmin.vip</url>
+    <name>plbb 后台管理</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -194,6 +193,7 @@
     </dependencies>
 
     <build>
+        <finalName>plbb-admin-${project.version}</finalName>
         <plugins>
             <!-- 打包时跳过测试 -->
             <plugin>

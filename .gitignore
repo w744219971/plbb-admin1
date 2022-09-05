@@ -5,4 +5,4 @@
 */*.iml
 /.gradle/
 /application.pid
-src/main/resources/config/application-local*.yml
+eladmin-system/src/main/resources/config/application-local.yml

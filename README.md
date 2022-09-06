@@ -87,5 +87,5 @@
         （1）创建数据库plbb_admin
         （2）执行sql目录下plbb-admin.sql脚本
     4.Redis配置：
-        启动redis，默认地址127.0.0.1:3306
+        启动redis，默认地址127.0.0.1:6369
     5.启动
